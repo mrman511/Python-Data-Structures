@@ -60,9 +60,11 @@ class LinkedList:
     temp = self.head
     while temp.next.next is not None:
       temp = temp.next
+    prev_tail = temp.next
     temp.next = None
     self.tail = temp
     self.length -= 1
+    return prev_tail
 
   def pop_first(self):
     self.head = self.head.next
@@ -88,8 +90,6 @@ class LinkedList:
     while temp is not None:
       lst.append(temp)
       temp = temp.next
-    
-    # print(f"here { }")
     self.head = lst.pop(-1)
     self.tail = lst.pop(0)
     self.tail.next = None
@@ -105,6 +105,9 @@ class LinkedList:
 print('create list with one value')
 my_linked_list = LinkedList(4)
 print(my_linked_list)
+print(f"head:{ my_linked_list.head.value }")
+print(f"tail:{ my_linked_list.tail.value }")
+print(f"length: { my_linked_list.length }")
 
 print('\nappend list')
 my_linked_list.append(32)
@@ -112,27 +115,48 @@ my_linked_list.append(31)
 my_linked_list.append(2)
 my_linked_list.append(17)
 print(my_linked_list)
+print(f"head:{ my_linked_list.head.value }")
+print(f"tail:{ my_linked_list.tail.value }")
+print(f"length: { my_linked_list.length }")
 
 print('\nprepend list')
 my_linked_list.prepend(73)
 print(my_linked_list)
+print(f"head:{ my_linked_list.head.value }")
+print(f"tail:{ my_linked_list.tail.value }")
+print(f"length: { my_linked_list.length }")
 
 print('\ninsert into list')
 my_linked_list.insert(2, 5)
 print(my_linked_list)
+print(f"head:{ my_linked_list.head.value }")
+print(f"tail:{ my_linked_list.tail.value }")
+print(f"length: { my_linked_list.length }")
 
 print('\nremove last item from list')
 my_linked_list.pop()
 print(my_linked_list)
+print(f"head:{ my_linked_list.head.value }")
+print(f"tail:{ my_linked_list.tail.value }")
+print(f"length: { my_linked_list.length }")
 
 print('\nremove first item from list')
 my_linked_list.pop_first()
 print(my_linked_list)
+print(f"head:{ my_linked_list.head.value }")
+print(f"tail:{ my_linked_list.tail.value }")
+print(f"length: { my_linked_list.length }")
 
 print('\nremove item from list at index')
 my_linked_list.remove(2)
 print(my_linked_list)
+print(f"head:{ my_linked_list.head.value }")
+print(f"tail:{ my_linked_list.tail.value }")
+print(f"length: { my_linked_list.length }")
 
 print('\nreverse list')
 my_linked_list.reverse()
 print(my_linked_list)
+print(f"head:{ my_linked_list.head.value }")
+print(f"tail:{ my_linked_list.tail.value }")
+print(f"length: { my_linked_list.length }")
