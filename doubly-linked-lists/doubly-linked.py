@@ -130,16 +130,12 @@ class DoublyLinkedList:
     temp_start = self.head
     temp_end = self.tail
     while i < half_length:
-      # print(temp_start, temp_end)
       if temp_start != temp_end:
         return False
       temp_start = temp_start.next
       temp_end = temp_end.prev
       i+=1
     return True
-
-    
-    
 
      
 
