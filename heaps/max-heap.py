@@ -24,7 +24,6 @@ class Heap:
     while True:
       left_index = self._left_child(index)
       right_index = self._right_child(index)
-
       if (left_index < len(self.heap) and self.heap[left_index] > self.heap[max_index]):
         max_index = left_index
       if ( right_index < len(self.heap) and self.heap[right_index] > self.heap[max_index]):
@@ -34,16 +33,6 @@ class Heap:
         index=max_index
       else:
         return
-        index=max_index
-
-    # if self.heap[index] < self.heap[self._left_child(index)] or self.heap[index] < self.heap[self._right_child(index)]:
-    #   if self.heap[self._left_child(index)] > self.heap[self._right_child(index)]:
-    #     self._swap(index, self._left_child(index))
-    #     return self._left_child(index)
-    #   else:
-    #     self._swap(self._right_child(index), index)
-    #     return self._right_child(index)
-
 
   def remove(self):
     if len(self.heap) == 0:
@@ -68,8 +57,6 @@ class Heap:
       current=parent
       parent=self._parent(current)
 
-
-    
       
 print('Create max heap')
 my_heap = Heap(20)
