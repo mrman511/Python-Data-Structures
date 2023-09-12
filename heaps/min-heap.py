@@ -25,13 +25,13 @@ class Heap:
       min_value = index
       left=self._left_child(index)
       right=self._right_child(index)
-      if left < len(self.heap) and self.heap[index] > self.heap[left]:
+      if left < len(self.heap) and self.heap[min_value] > self.heap[left]:
         min_value=left
-      if right < len(self.heap) and self.heap[index] > self.heap[right]:
+      if right < len(self.heap) and self.heap[min_value] > self.heap[right]:
         min_value=right
       if min_value == index:
         return
-      self._swap_index(min_value, index)
+      self._swap_index(index, min_value)
       index=min_value
 
   def insert(self, value):
@@ -61,7 +61,7 @@ my_heap = Heap(20)
 print(f'my_heap: { my_heap }')
 
 print('\nInsert Into Heap')
-for i in range(3):
+for i in range(5):
   num=int(round(random.random() * 100 + 8, 0))
   search_num_true = num
   my_heap.insert(num)
@@ -69,5 +69,7 @@ my_heap.insert(5)
 print(f'my_heap: { my_heap }')
 
 print('\nRemove item from heap')
+print(f'item removed: {my_heap.remove()}')
+print(my_heap)
 print(f'item removed: {my_heap.remove()}')
 print(my_heap)
