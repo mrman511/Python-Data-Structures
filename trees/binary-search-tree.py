@@ -75,6 +75,11 @@ class BinarySearchTree:
         string+=f'[{node}]'if node is not None else '[]'
     return string
 
+  def min_value(self, current_node):
+    while current_node.left is not None:
+      current_node=current_node.left
+    return current_node.value
+
   def insert(self, value):
     new_node=Node(value)
     current=self.start
@@ -102,7 +107,33 @@ class BinarySearchTree:
       else:
         current=current.right
     return False
+
+  def __delete_node(self, current_node, value):
+    if current_node == None:
+      return None
+    if value < current_node.value:
+      current_node.left = self.__delete_node(current_node.left, value)
+    if value > current_node.value:
+      current_node.right = self.__delete_node(current_node.right, value)
+    else:
+      if current_node.right == None and current_node.left == None:
+        return None
+      elif current_node.left == None:
+        current_node = current_node.right
+      elif current_node.right == None:
+        current_node = current_node.left
+      else:
+        sub_tree_min = self.min_value(current_node.right)
+        current_node.value = sub_tree_min
+        current_node.right = self.__delete_node(current_node.right, sub_tree_min)
+    return current_node
+
+  def delete_node(self, value):
+    self.__delete_node(self.start, value)
     
+
+
+
 print('Create Binary Search Tree')
 my_binary_search_tree=BinarySearchTree(5)
 print(my_binary_search_tree)
@@ -113,7 +144,6 @@ search_num_true=0
 for i in range(6):
   num=int(round(random.random() * 9 + 1, 0))
   search_num_true = num
-  print(f'Inserting Number: [{num}]')
   my_binary_search_tree.insert(num)
 print(my_binary_search_tree)
 
@@ -123,3 +153,15 @@ print('should return node')
 print(f"my_binary_search_tree.contains({search_num_true}):{my_binary_search_tree.contains(search_num_true)}")
 print('should return False')
 print(f"my_binary_search_tree.contains({search_num_false}): {my_binary_search_tree.contains(search_num_false)}")
+
+print('\nMin Value')
+print('min from start')
+print(my_binary_search_tree.min_value(my_binary_search_tree.start))
+print('min from right')
+print(my_binary_search_tree.min_value(my_binary_search_tree.start.right))
+
+print('\nDelete Node')
+print(my_binary_search_tree)
+print("my_binary_search_tree.delete_node(8)")
+print(my_binary_search_tree.delete_node(8))
+print(my_binary_search_tree)

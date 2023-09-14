@@ -99,9 +99,11 @@ class RBST:
       return self.contains(value, current_node.left)
     return False
 
-  # def delete(self, value, current_node='start'):
-  #   if current_node == 'start':
-  #     current_node = self.start
+  def __delete_node(self, value, current_node='start'):
+    if current_node == 'start':
+      current_node = self.start
+
+  def delete_node()
 
     
 
