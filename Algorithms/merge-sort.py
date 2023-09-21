@@ -17,7 +17,7 @@ sorted_list2 = insertion_sort(rand_list2)
 print(sorted_list1)
 print(sorted_list2)
 
-def merge_sort(lst1, lst2):
+def merge(lst1, lst2):
   long, short = (lst1, lst2) if len(lst1)>=len(lst2) else (lst2, lst1)
   lst=[]
   for i in range(len(long)):
@@ -27,4 +27,19 @@ def merge_sort(lst1, lst2):
   lst+=short
   return lst
 
-print(merge_sort(sorted_list1, sorted_list2))
+print(merge(sorted_list1, sorted_list2))
+
+def merge_sort(lst):
+  if len(lst) == 1:
+    return lst
+  mid_index = int(len(lst)/2)
+  left=merge_sort(lst[:mid_index])
+  right=merge_sort(lst[mid_index:])
+
+  return merge(left, right)
+
+
+rand_list = [int(round(random.random() * 100 + 1, 0)) for i in range(10)]
+print('\nMerge Sort')
+print(rand_list)
+print(merge_sort(rand_list))
